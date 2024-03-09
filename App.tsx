@@ -1,118 +1,69 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from "react";
+import { Image, SafeAreaView, Text, TouchableOpacity } from "react-native";
+import Section, { SectionProps } from "./src/components/Section";
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const sectionsData: SectionProps[] = [
+  {
+    title: "Lịch trình",
+    titleStyle: { fontWeight: "bold" },
+    events: [
+      {
+        title: "Địa điểm",
+        content: "Hồ tràm, Vũng Tàu",
+      },
+      {
+        title: "Thời gian",
+        content: "09:00 AM - 12:00 AM",
+      },
+      {
+        title: "Phương tiện di chuyển",
+        content: "Xe bus",
+      },
+      {
+        title: "Hình ảnh",
+        contentComponent: <Image source={require('./src/assets/images/vungtau.jpeg')} style={{
+          width: '100%',
+          height: 180,
+          resizeMode: 'cover',
+          borderRadius: 4,
+        }} />,
+      }
+    ]
+  },
+  {
+    title: "Khách sạn",
+    titleStyle: { fontWeight: 'bold' },
+    events: [
+      {
+        title: "Tên khách sạn",
+        content: "Hồng Quỳnh",
+      },
+      {
+        title: "Giờ mở cửa",
+        content: "06:00 AM - 12:00 AM",
+      },
+      {
+        title: "Địa điểm",
+        content: "234 Quang Trung",
+      },
+      {
+        contentComponent: <TouchableOpacity
+        style={{width:'100%', height:40, backgroundColor:'#0096FF', borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>Chi tiết</Text>
+        </TouchableOpacity>
+      }
+    ]
+  }
+];
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView>
+      {sectionsData.map((section, index) => (
+        <Section key={index.toString()} {...section} />
+      ))}
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
