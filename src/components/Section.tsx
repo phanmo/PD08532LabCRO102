@@ -51,6 +51,8 @@ const Section = ({ title, titleStyle, events }: SectionProps) => {
     );
 };
 
+export default Section;
+
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
@@ -92,4 +94,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Section;
