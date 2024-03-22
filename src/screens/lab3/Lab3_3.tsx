@@ -27,7 +27,7 @@ const DynamicHeader = ({value}: any) => {
 
   const animatedHeaderColor = value.interpolate({
     inputRange: [0, Scroll_Distance],
-    outputRange: ['#181D31', '#678983'],
+    outputRange: ['#014421', '#355E3B'],
     extrapolate: 'clamp',
   });
 
@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
   },
   card: {
     height: 100,
-    backgroundColor: '#E6DDC4',
+    backgroundColor: 'lightgray',
+    borderRadius: 4,
     marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',

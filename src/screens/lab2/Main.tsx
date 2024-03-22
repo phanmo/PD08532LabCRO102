@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import { Header } from "./Header";
 import { Body } from "./Body";
 import { Footer } from "./Footer";
@@ -50,7 +50,8 @@ export default function Main() {
     }, [user]);
 
 return(
-    <View style={style.container}>
+    <SafeAreaView>
+        <View style={style.container}>
     <Header user={user} />
     <Body 
     onUpdateInfor={handleUpdateInfor}
@@ -60,6 +61,7 @@ return(
     timeUpdate={lastTimeUpdate}
     backgroundColor={footerColor}/>
 </View>
+    </SafeAreaView>
 );
 }
 const style = StyleSheet.create({
