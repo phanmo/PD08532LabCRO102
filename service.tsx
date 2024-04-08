@@ -51,6 +51,7 @@ export const usePlayTrack = (playListData: AddTrack[]) => {
     const [trackArtist, setTrackArtist] = useState<string>();
     const [trackArword, setTrackArtwork] = useState<string>();
 
+    
     useTrackPlayerEvents([Event.PlaybackActiveTrackChanged], async event => {
         const { title, artwork, artist } = event?.track || {};
         if (event.type === Event.PlaybackActiveTrackChanged && !!event?.track) {
